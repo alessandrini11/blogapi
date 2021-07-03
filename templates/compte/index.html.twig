@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CompteController!{% endblock %}
+
+{% block body %}
+    <div class="w-10/12 md:w-1/4 mx-auto mt-24">
+        <form class="border bg-white border-gray-700 p-4 rounded-md" method="post" action="{{ path('login') }}">
+            <h3 class="text-2xl">Connectez-Vous</h3>
+            {% if error %}
+                <p class="bg-red-300 text-red-800 py-1 px-3">Une erreur est survenue, Email ou mot de passe incorrecte</p>
+            {% endif %}
+            <div class="my-5 focus:outline-none border border-gray-700 rounded-md py-2 px-4">
+
+                <input type="hidden" name="_target_path" value="{{ path('article_index') }}">
+                <div class="flex items-center">
+                    <i class="far fa-user"></i>
+                    <input name="_username" value="{{ user }}" class="ml-2  focus:outline-none w-full" type="text" name="" id="">
+                </div>
+            </div>
+            <div class="my-5  border border-gray-700 rounded-md py-2 px-4">
+                <div class="flex items-center">
+                    <i class="fas fa-lock"></i>
+                    <input name="_password" class="ml-2 focus:outline-none  w-full" type="password" name="" id="">
+                </div>
+            </div>
+            <div class="">
+                <button class="w-full bg-green-600 text-white py-3 mt-5 rounded">Connexion</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

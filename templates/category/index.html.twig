@@ -1,0 +1,38 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Categorie{% endblock %}
+
+{% block body %}
+    <div class="">
+        <h2>Liste des categories</h2>
+        <table class="w-1/2 mx-auto">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Color</th>
+                <th>Article</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            {% for category in categories %}
+                <tr>
+                    <td class="py-3">{{ category.id }}</td>
+                    <td class="py-3">{{ category.nom }}</td>
+                    <td class="py-3 bg-"><div style="background: {{ category.color }}"  class="h-full w-full">{{ category.color }}</div></td>
+                    <td>{{ category.articles | length }}</td>
+                    <td class="py-3">
+                        <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
+                        <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

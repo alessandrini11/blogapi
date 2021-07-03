@@ -1,0 +1,43 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+
+    <div class="w-4/6 mx-auto">
+        <h1 class="text-xl">Liste des Admin</h1>
+        <p class="text-right text-green-800 text-xl cursor-pointer"><a href="{{ path('user_new') }}"><i class="fas fa-plus "></i> add post</a></p>
+        <table class="w-full ">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Pseudo</th>
+                <th>Password</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            {% for user in users %}
+                <tr >
+                    <td class="py-3">{{ user.id }}</td>
+                    <td class="py-3">{{ user.nom }}</td>
+                    <td class="py-3">{{ user.pseudo }}</td>
+                    <td class="py-3">{{ user.password }}</td>
+                    <td class="py-3">
+                        <div class="flex justify-center">
+                            <a href="{{ path('user_show', {'id': user.id}) }}"><i class="fa fa-eye"></i></a>
+                            <a class="mx-3" href="{{ path('user_edit', {'id': user.id}) }}"><i class="fas fa-pencil-alt"></i></a>
+                            {{ include('user/_delete_form.html.twig') }}
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

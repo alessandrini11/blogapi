@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    font-family: 'Roboto', serif;
+}
+h1,h2,h3,h4{
+    font-family: 'Ubuntu',sans-serif;
+}
+@media (min-width: 900px) {
+    .proportion{
+        display: grid;
+        grid-gap: 2rem;
+        grid-template-columns: 2fr 1fr;
+    }
+}
